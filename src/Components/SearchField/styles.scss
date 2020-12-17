@@ -1,0 +1,23 @@
+.search-field-container {
+  display: flex;
+  flex-direction: row;
+  height: 50px;
+  width: 100%;
+
+  &__input {
+    border-radius: 8px 0 0 8px;
+    border: 0;
+    width: 100%;
+  }
+
+  &__submit {
+    width: 50px;
+    margin-left: -10px;
+    border-radius: 0 8px 8px 0;
+    border: 0;
+    background-color: black;
+    background-image: url(../../assets/icon-arrow.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}

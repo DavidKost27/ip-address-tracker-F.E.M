@@ -1,10 +1,37 @@
+/* 
+- Very Dark Gray: hsl(0, 0%, 17%)
+- Dark Gray: hsl(0, 0%, 59%)
+ */
+
 .App {
   height: 100vh;
   width: 100vw;
+  font-size: 18px;
+
   .top-container {
     height: 30vh;
+    width: 100vw;
+    padding: 0 30px;
+    box-sizing: border-box;
+    background-image: url(./assets/pattern-bg.png);
+    background-position: 54% 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 1;
+
+    h2 {
+    }
   }
+
   > div {
     height: 70vh;
+    position: relative;
+    z-index: 0;
   }
+}
+
+@media only screen and (min-width: 1440pxpx) {
 }

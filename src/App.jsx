@@ -2,6 +2,8 @@ import React from 'react';
 import './App.jsx';
 import './App.scss';
 import {MapContainer, TileLayer, Marker, Popup} from "react-leaflet";
+import SearchField from "./Components/SearchField";
+import InfoContainer from "./Components/InfoContainer";
 
 
 function App() {
@@ -9,7 +11,13 @@ function App() {
   return (
     <div className="App">
 
-    <div className="top-container"> da</div>
+    <div className="top-container">
+    <h2> IP Address Tracker</h2>
+      <SearchField/>
+      <InfoContainer/>
+    </div>
+      
+
  
       <MapContainer center={position} zoom={13} scrollWheelZoom={false} >
         <TileLayer
@@ -29,3 +37,9 @@ function App() {
 }
 
 export default App;
+
+
+{/* <div class="attribution">
+Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+Coded by <a href="#">Your Name Here</a>.
+</div> */}
