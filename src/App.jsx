@@ -1,27 +1,26 @@
 import { useState } from "react";
 import "./App.jsx";
 import "./App.scss";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import SearchField from "./Components/SearchField";
 import InfoContainer from "./Components/InfoContainer";
 import axios from "axios";
 require("dotenv").config();
 
 function App() {
-  const position = [51.505, -0.09];
-
   const [apiUserInputRequest, setApiUserInputRequest] = useState(null);
 
   const [OutputData, setOutputData] = useState({
-    ip: null,
-    isp: null,
-    country: null,
+    ip: "0.0.0.0",
+    isp: "None",
+    country: "UK",
     region: null,
-    city: null,
-    timezone: null,
-    lat: null,
-    lng: null,
+    city: "London",
+    timezone: "+01:00",
+    lat: 51.5,
+    lng: -0.09,
   });
+  const [position, setPosition] = useState([OutputData.lat, OutputData.lng]);
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -29,36 +28,39 @@ function App() {
   };
 
   const apiRequest = () => {
-    axios
-      .get(
-        `https://geo.ipify.org/api/v1?apiKey=${process.env.REACT_APP_API_KEY}&ipAddress=${apiUserInputRequest}`
-      )
-      .then((res) => {
-        const apiResponse = res.data;
+    if (apiUserInputRequest) {
+      axios
+        .get(
+          `https://geo.ipify.org/api/v1?apiKey=${process.env.REACT_APP_API_KEY}&ipAddress=${apiUserInputRequest}`
+        )
+        .then((res) => {
+          const apiResponse = res.data;
 
-        const { ip, isp } = apiResponse;
-        const {
-          city,
-          country,
-          region,
-          timezone,
-          lat,
-          lng,
-        } = apiResponse.location;
-        setOutputData({
-          ip: ip,
-          isp: isp,
-          country: country,
-          region: region,
-          city: city,
-          timezone: timezone,
-          lat: lat,
-          lng: lng,
+          const { ip, isp } = apiResponse;
+          const {
+            city,
+            country,
+            region,
+            timezone,
+            lat,
+            lng,
+          } = apiResponse.location;
+          setOutputData({
+            ip: ip,
+            isp: isp,
+            country: country,
+            region: region,
+            city: city,
+            timezone: timezone,
+            lat: lat,
+            lng: lng,
+          });
+          setPosition([lat, lng]);
         });
-        console.log(OutputData);
-      });
+    }
   };
 
+  // const map = useMap();
   return (
     <div className="App">
       <div className="top-container">
@@ -69,10 +71,9 @@ function App() {
           submitHandler={submitHandler}
         />
 
-        <InfoContainer />
+        <InfoContainer OutputData={OutputData} />
       </div>
-
-      <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
+      <MapContainer center={position} zoom={13} scrollWheelZoom={true}>
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -83,8 +84,6 @@ function App() {
           </Popup>
         </Marker>
       </MapContainer>
-
-      <button onClick={() => apiRequest()}>GGGGGGGG</button>
     </div>
   );
 }
