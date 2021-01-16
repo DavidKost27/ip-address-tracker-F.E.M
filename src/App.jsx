@@ -21,7 +21,7 @@ function App() {
   }, []);
   useEffect(() => {
     apiRequest(apiUserInputRequest);
-  }, [apiUserInputRequest]);
+  }, [apiUserInputRequest]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const [OutputData, setOutputData] = useState({
     ip: "0.0.0.0",
