@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.jsx";
 import "./App.scss";
-import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import SearchField from "./Components/SearchField";
 import InfoContainer from "./Components/InfoContainer";
 import axios from "axios";
@@ -9,21 +9,35 @@ require("dotenv").config();
 
 function App() {
   const [apiUserInputRequest, setApiUserInputRequest] = useState(null);
+  const [apiUserInputRequestCopy, setApiUserInputRequestCopy] = useState(null);
+
+  const userIP = () =>
+    axios.get(`https://api.ipify.org?format=json`).then((res) => {
+      setApiUserInputRequest(res.data.ip);
+    });
+
+  useEffect(() => {
+    userIP();
+  }, []);
+  useEffect(() => {
+    apiRequest(apiUserInputRequest);
+  }, [apiUserInputRequest]);
 
   const [OutputData, setOutputData] = useState({
     ip: "0.0.0.0",
     isp: "None",
-    country: "UK",
+    country: "null",
     region: null,
-    city: "London",
-    timezone: "+01:00",
-    lat: 51.5,
-    lng: -0.09,
+    city: "null",
+    timezone: "null",
+    lat: 0,
+    lng: 0,
   });
   const [position, setPosition] = useState([OutputData.lat, OutputData.lng]);
 
   const submitHandler = (event) => {
     event.preventDefault();
+    setApiUserInputRequest(apiUserInputRequestCopy);
     apiRequest();
   };
 
@@ -35,8 +49,8 @@ function App() {
         )
         .then((res) => {
           const apiResponse = res.data;
-
-          const { ip, isp } = apiResponse;
+          const { ip } = apiResponse;
+          const isp = apiResponse.as.name;
           const {
             city,
             country,
@@ -59,20 +73,8 @@ function App() {
         });
     }
   };
-
-  // const map = useMap();
-  return (
-    <div className="App">
-      <div className="top-container">
-        <h2> IP Address Tracker</h2>
-
-        <SearchField
-          setApiUserInputRequest={setApiUserInputRequest}
-          submitHandler={submitHandler}
-        />
-
-        <InfoContainer OutputData={OutputData} />
-      </div>
+  const Map = () => {
+    return (
       <MapContainer center={position} zoom={13} scrollWheelZoom={true}>
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -84,6 +86,24 @@ function App() {
           </Popup>
         </Marker>
       </MapContainer>
+    );
+  };
+
+  return (
+    <div className="App">
+      <div className="top-container">
+        <h2> IP Address Tracker</h2>
+
+        <SearchField
+          setApiUserInputRequest={setApiUserInputRequest}
+          setApiUserInputRequestCopy={setApiUserInputRequestCopy}
+          submitHandler={submitHandler}
+        />
+
+        <InfoContainer OutputData={OutputData} />
+      </div>
+
+      <Map />
     </div>
   );
 }

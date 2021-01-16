@@ -9,8 +9,7 @@ export default function SearchField(props) {
         type="text"
         placeholder=" Search for any IP address or domain"
         onChange={(event) => {
-          props.setApiUserInputRequest(event.target.value);
-          console.log(event.target.value);
+          props.setApiUserInputRequestCopy(event.target.value);
         }}
       />
 
