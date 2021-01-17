@@ -1,11 +1,18 @@
 import { useState, useEffect } from "react";
-import "./App.jsx";
+import "normalize.css";
 import "./App.scss";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+
+// imported components
+import TopBar from "./Components/TopBar";
 import SearchField from "./Components/SearchField";
 import InfoContainer from "./Components/InfoContainer";
+//
+
+// impoeted dependencies
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import axios from "axios";
 require("dotenv").config();
+//
 
 function App() {
   const [apiUserInputRequest, setApiUserInputRequest] = useState(null);
@@ -75,7 +82,12 @@ function App() {
   };
   const Map = () => {
     return (
-      <MapContainer center={position} zoom={13} scrollWheelZoom={true}>
+      <MapContainer
+        center={position}
+        zoom={13}
+        scrollWheelZoom={true}
+        style={{ height: "50vh", zIndex: 1 }}
+      >
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -91,6 +103,7 @@ function App() {
 
   return (
     <div className="App">
+      <TopBar />
       <div className="top-container">
         <h2> IP Address Tracker</h2>
 

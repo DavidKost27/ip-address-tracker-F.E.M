@@ -4,16 +4,16 @@
  */
 
 .App {
-  height: 20vh;
+  height: 100vh;
   width: 100vw;
   font-size: 18px;
-  // overflow-y: hidden;
 
   .top-container {
     height: 50vh;
     width: 100vw;
     padding: 0 50px;
-    padding-top: 100px;
+    margin-top: 60px;
+    // padding-top: 100px;
     box-sizing: border-box;
     background-image: url(./assets/pattern-bg.png);
     background-position: 54% 0;
@@ -36,11 +36,11 @@
     }
   }
 
-  > div {
-    height: 70vh;
-    position: relative;
-    z-index: 0;
-  }
+  // > div {
+  //   height: 70vh;
+  //   position: relative;
+  //   z-index: 0;
+  // }
 }
 
 @media only screen and (min-width: 1440pxpx) {
