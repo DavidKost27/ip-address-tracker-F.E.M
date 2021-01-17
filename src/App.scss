@@ -25,18 +25,160 @@
     z-index: 1;
     grid-area: topsection;
     box-sizing: border-box;
-    .search-field-container {
-      padding-bottom: 20px;
-    }
 
     &__header {
       margin-bottom: 10px;
       font-size: 27.5px;
       text-align: center;
       font-weight: 500;
+      color: rgb(255, 255, 255);
+    }
+
+    .search-field-container {
+      padding-bottom: 20px;
+    }
+
+    .info-container {
     }
   }
 }
 
-@media only screen and (min-width: 1440pxpx) {
+// Tablet - 768 px width
+@media only screen and (min-width: 768px) {
+  .App {
+    .top-bar-container {
+    }
+    .top-container {
+      padding: 0 130px;
+      padding-top: 100px;
+
+      &__header {
+        margin-bottom: 10px;
+        font-size: 48px;
+        text-align: center;
+        font-weight: 500;
+      }
+
+      .search-field-container {
+        padding-bottom: 20px;
+      }
+
+      .info-container {
+      }
+    }
+  }
+}
+
+// Web - 1280 px width
+@media only screen and (min-width: 1280px) {
+  .App {
+    .top-bar-container {
+      box-sizing: content-box;
+    }
+    .top-container {
+      height: calc(30vh - 18px);
+      padding: 0 130px;
+      padding-top: 100px;
+      background-size: contain;
+
+      &__header {
+        margin-bottom: 10px;
+        text-align: center;
+        font-size: 50px;
+        font-weight: 500;
+        margin-top: 20px;
+      }
+
+      .search-field-container {
+        height: 80px;
+        padding: 0 250px;
+        padding-bottom: 20px;
+        font-size: 40px;
+      }
+
+      .info-container {
+        margin-top: 30px;
+      }
+    }
+    .leaflet-container {
+      height: 72.1vh;
+      z-index: 1;
+    }
+  }
+}
+
+// Web - 1440 px width
+@media only screen and (min-width: 1440px) {
+  .App {
+    .top-bar-container {
+      box-sizing: content-box;
+    }
+    .top-container {
+      height: calc(30vh - 20px);
+      padding: 0 130px;
+      padding-top: 100px;
+      background-size: contain;
+
+      &__header {
+        margin-bottom: 10px;
+        text-align: center;
+        font-size: 50px;
+        font-weight: 500;
+        margin-top: 20px;
+      }
+
+      .search-field-container {
+        height: 80px;
+        padding: 0 250px;
+        padding-bottom: 20px;
+        font-size: 40px;
+      }
+
+      .info-container {
+        margin-top: 30px;
+      }
+    }
+    .leaflet-container {
+      height: 72.1vh;
+      z-index: 1;
+    }
+  }
+}
+
+// Web - 1920 px width
+@media only screen and (min-width: 1920px) {
+  .App {
+    .top-bar-container {
+      box-sizing: content-box;
+    }
+    .top-container {
+      height: calc(31vh - 0px);
+      padding: 0 130px;
+      padding-top: 100px;
+      background-size: contain;
+
+      &__header {
+        margin-bottom: 10px;
+        text-align: center;
+        font-size: 50px;
+        font-weight: 500;
+        margin-top: 20px;
+      }
+
+      .search-field-container {
+        height: 80px;
+        padding: 0 250px;
+        padding-bottom: 20px;
+        font-size: 40px;
+      }
+
+      .info-container {
+        margin-top: 30px;
+      }
+    }
+    .leaflet-container {
+      height: 69vh;
+      z-index: 1;
+    }
+  }
 }

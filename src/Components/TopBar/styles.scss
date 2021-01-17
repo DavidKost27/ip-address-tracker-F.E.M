@@ -12,5 +12,18 @@
     background-color: rgb(64, 53, 161);
     color: white;
     border-radius: 30px;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+// Tablet - 768 px width
+@media only screen and (min-width: 768px) {
+  .top-bar-container {
+    right: 15px;
+    top: 15px;
+
+    .hamburger-react {
+      background-color: rgb(0, 0, 0);
+    }
   }
 }

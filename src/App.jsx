@@ -4,6 +4,7 @@ import "./App.scss";
 
 // imported components
 import TopBar from "./Components/TopBar";
+import Menu from "./Components/Menu";
 import SearchField from "./Components/SearchField";
 import InfoContainer from "./Components/InfoContainer";
 //
@@ -15,6 +16,9 @@ require("dotenv").config();
 //
 
 function App() {
+  // State For Hamburger Button
+  const [isOpen, setOpen] = useState(false);
+
   const [apiUserInputRequest, setApiUserInputRequest] = useState(null);
   const [apiUserInputRequestCopy, setApiUserInputRequestCopy] = useState(null);
 
@@ -88,7 +92,7 @@ function App() {
         center={position}
         zoom={13}
         scrollWheelZoom={true}
-        style={{ height: "50vh", zIndex: 1 }}
+        // style={{ height: "50vh",  }}
       >
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -108,7 +112,9 @@ function App() {
   return (
     <div className="App">
       <div className="top-container">
-        <TopBar />
+        <TopBar setOpen={setOpen} isOpen={isOpen} />
+        <Menu isOpen={isOpen} />
+
         <div className="top-container__header"> IP Address Tracker</div>
 
         <SearchField
