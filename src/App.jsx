@@ -80,6 +80,8 @@ function App() {
         });
     }
   };
+
+  // Map Components
   const Map = () => {
     return (
       <MapContainer
@@ -100,12 +102,14 @@ function App() {
       </MapContainer>
     );
   };
+  //
 
+  // App
   return (
     <div className="App">
-      <TopBar />
       <div className="top-container">
-        <h2> IP Address Tracker</h2>
+        <TopBar />
+        <div className="top-container__header"> IP Address Tracker</div>
 
         <SearchField
           setApiUserInputRequest={setApiUserInputRequest}
