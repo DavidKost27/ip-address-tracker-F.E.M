@@ -14,7 +14,7 @@
     height: 50vh;
     width: 100vw;
     padding: 0 50px;
-    padding-top: 100px;
+    padding-top: 90px;
     background-image: url(./assets/pattern-bg.png);
     background-position: 54% 0;
     background-repeat: no-repeat;
@@ -41,6 +41,11 @@
     .info-container {
     }
   }
+  .leaflet-container {
+    height: 50vh;
+    width: 100vw;
+    z-index: 1;
+  }
 }
 
 // Tablet - 768 px width
@@ -49,8 +54,9 @@
     .top-bar-container {
     }
     .top-container {
+      height: 40vh;
       padding: 0 130px;
-      padding-top: 100px;
+      padding-top: 180px;
 
       &__header {
         margin-bottom: 10px;
@@ -66,6 +72,10 @@
       .info-container {
       }
     }
+    .leaflet-container {
+      height: 60vh;
+      z-index: 1;
+    }
   }
 }
 
@@ -76,10 +86,11 @@
       box-sizing: content-box;
     }
     .top-container {
-      height: calc(30vh - 18px);
+      height: 30vh;
+      width: 100vw;
       padding: 0 130px;
       padding-top: 100px;
-      background-size: contain;
+      background-size: cover;
 
       &__header {
         margin-bottom: 10px;
@@ -101,45 +112,7 @@
       }
     }
     .leaflet-container {
-      height: 72.1vh;
-      z-index: 1;
-    }
-  }
-}
-
-// Web - 1440 px width
-@media only screen and (min-width: 1440px) {
-  .App {
-    .top-bar-container {
-      box-sizing: content-box;
-    }
-    .top-container {
-      height: calc(30vh - 20px);
-      padding: 0 130px;
-      padding-top: 100px;
-      background-size: contain;
-
-      &__header {
-        margin-bottom: 10px;
-        text-align: center;
-        font-size: 50px;
-        font-weight: 500;
-        margin-top: 20px;
-      }
-
-      .search-field-container {
-        height: 80px;
-        padding: 0 250px;
-        padding-bottom: 20px;
-        font-size: 40px;
-      }
-
-      .info-container {
-        margin-top: 30px;
-      }
-    }
-    .leaflet-container {
-      height: 72.1vh;
+      height: 70vh;
       z-index: 1;
     }
   }
@@ -149,36 +122,82 @@
 @media only screen and (min-width: 1920px) {
   .App {
     .top-bar-container {
-      box-sizing: content-box;
     }
     .top-container {
-      height: calc(31vh - 0px);
-      padding: 0 130px;
+      padding: 0 330px;
       padding-top: 100px;
-      background-size: contain;
-
       &__header {
-        margin-bottom: 10px;
-        text-align: center;
-        font-size: 50px;
-        font-weight: 500;
-        margin-top: 20px;
       }
 
       .search-field-container {
-        height: 80px;
-        padding: 0 250px;
-        padding-bottom: 20px;
-        font-size: 40px;
+        padding: 0 320px;
       }
 
       .info-container {
-        margin-top: 30px;
       }
     }
     .leaflet-container {
-      height: 69vh;
-      z-index: 1;
     }
   }
 }
+
+// Web - 3000 px width
+@media only screen and (min-width: 3000px) {
+  .App {
+    .top-bar-container {
+    }
+    .top-container {
+      padding: 0 830px;
+      padding-top: 100px;
+      &__header {
+      }
+
+      .search-field-container {
+        padding: 0 550px;
+      }
+
+      .info-container {
+      }
+    }
+    .leaflet-container {
+    }
+  }
+}
+
+// // Web - 1920 px width
+// @media only screen and (min-width: 1920px) {
+//   .App {
+//     .top-bar-container {
+//       box-sizing: content-box;
+//     }
+//     .top-container {
+//       height: calc(31vh - 0px);
+//       padding: 0 130px;
+//       padding-top: 100px;
+//       background-size: contain;
+
+//       &__header {
+//         margin-bottom: 10px;
+//         text-align: center;
+//         font-size: 50px;
+//         font-weight: 500;
+//         margin-top: 20px;
+//       }
+
+//       .search-field-container {
+//         height: 80px;
+//         padding: 0 250px;
+//         padding-bottom: 20px;
+//         font-size: 40px;
+//       }
+
+//       .info-container {
+//         margin-top: 30px;
+//       }
+//     }
+//     .leaflet-container {
+//       height: 69vh;
+//       z-index: 1;
+//     }
+//   }
+// }

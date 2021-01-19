@@ -27,3 +27,18 @@
     }
   }
 }
+
+// Tablet - 1440 px width
+@media only screen and (min-width: 1440px) {
+  .top-bar-container {
+    right: 15px;
+    top: 15px;
+
+    .hamburger-react {
+      background-color: rgb(165, 7, 7);
+      > div {
+        width: 40px;
+      }
+    }
+  }
+}

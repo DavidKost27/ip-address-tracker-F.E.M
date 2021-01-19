@@ -85,12 +85,23 @@ function App() {
     }
   };
 
+  // Zoom Level Based on Screen-width
+  let width = document.documentElement.clientWidth;
+  let preferedZoom = 13;
+  if (width > 767 && width < 1279) {
+    preferedZoom = 14;
+  } else if (width > 1279 && width < 2000) {
+    preferedZoom = 15;
+  } else if (width > 2000) {
+    preferedZoom = 16;
+  }
+
   // Map Components
   const Map = () => {
     return (
       <MapContainer
         center={position}
-        zoom={13}
+        zoom={preferedZoom}
         scrollWheelZoom={true}
         // style={{ height: "50vh",  }}
       >
