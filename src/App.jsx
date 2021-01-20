@@ -4,6 +4,7 @@ import "./App.scss";
 
 // imported components
 import TopBar from "./Components/TopBar";
+import Menu from "./Components/Menu";
 import SearchField from "./Components/SearchField";
 import InfoContainer from "./Components/InfoContainer";
 //
@@ -15,6 +16,9 @@ require("dotenv").config();
 //
 
 function App() {
+  // State For Hamburger Button
+  const [isOpen, setOpen] = useState(false);
+
   const [apiUserInputRequest, setApiUserInputRequest] = useState(null);
   const [apiUserInputRequestCopy, setApiUserInputRequestCopy] = useState(null);
 
@@ -80,13 +84,26 @@ function App() {
         });
     }
   };
+
+  // Zoom Level Based on Screen-width
+  let width = document.documentElement.clientWidth;
+  let preferedZoom = 13;
+  if (width > 767 && width < 1279) {
+    preferedZoom = 14;
+  } else if (width > 1279 && width < 2000) {
+    preferedZoom = 15;
+  } else if (width > 2000) {
+    preferedZoom = 16;
+  }
+
+  // Map Components
   const Map = () => {
     return (
       <MapContainer
         center={position}
-        zoom={13}
+        zoom={preferedZoom}
         scrollWheelZoom={true}
-        style={{ height: "50vh", zIndex: 1 }}
+        // style={{ height: "50vh",  }}
       >
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -100,12 +117,16 @@ function App() {
       </MapContainer>
     );
   };
+  //
 
+  // App
   return (
     <div className="App">
-      <TopBar />
       <div className="top-container">
-        <h2> IP Address Tracker</h2>
+        <TopBar setOpen={setOpen} isOpen={isOpen} />
+        <Menu isOpen={isOpen} />
+
+        <div className="top-container__header"> IP Address Tracker</div>
 
         <SearchField
           setApiUserInputRequest={setApiUserInputRequest}
